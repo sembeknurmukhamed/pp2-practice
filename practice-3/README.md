@@ -6,7 +6,7 @@ This practice focuses on mastering Python functions, lambda expressions, and obj
 
 ## Topics
 
-**Resource**: [W3Schools Python Functions Tutorial](https://www.w3schools.com/python/python_functions.asp)
+**Resource**: [W3Schools](https://www.w3schools.com/python)
 ---
 
 ### Python functions
