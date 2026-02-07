@@ -1,6 +1,6 @@
 # HELLO! I CREATED THIS REPO FOR MY PRACTICE TASKS
 
-Call me noni
+smtn smtn
 
 ## (useful information)
 
