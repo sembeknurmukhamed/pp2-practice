@@ -6,5 +6,5 @@ Practice covers advanced Python concepts including iterators and generators, wor
 
 ### Resources
 
-**W3Schools Python**: [https://www.w3schools.com/python/default.asp](https://www.w3schools.com/python/default.asp)
-**Geeksforgeeks**: [https://www.geeksforgeeks.org/python/generators-in-python/](https://www.geeksforgeeks.org/python/generators-in-python/)
+- **W3Schools Python**: [https://www.w3schools.com/python/default.asp](https://www.w3schools.com/python/default.asp)
+- **Geeksforgeeks**: [https://www.geeksforgeeks.org/python/generators-in-python/](https://www.geeksforgeeks.org/python/generators-in-python/)
