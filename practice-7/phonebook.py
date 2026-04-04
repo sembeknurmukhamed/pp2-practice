@@ -2,7 +2,6 @@ import csv
 import psycopg2
 from config import host, user, password, db_name
 
-# ─── Connection ───────────────────────────────────────────────
 def get_connection():
     conn = psycopg2.connect(
         host=host, user=user, password=password, database=db_name,
@@ -11,7 +10,6 @@ def get_connection():
     conn.autocommit = True
     return conn
 
-# ─── 1. Create table ──────────────────────────────────────────
 def create_table():
     with get_connection() as conn:
         with conn.cursor() as cursor:
@@ -24,7 +22,6 @@ def create_table():
             """)
     print("[INFO] Table is ready")
 
-# ─── 2. Insert from CSV ───────────────────────────────────────
 def insert_from_csv(filepath):
     inserted = 0
     skipped  = 0
@@ -50,7 +47,6 @@ def insert_from_csv(filepath):
     conn.close()
     print(f"[INFO] CSV import done — inserted: {inserted}, skipped: {skipped}")
 
-# ─── 3. Insert from console ───────────────────────────────────
 def insert_from_console():
     name  = input("Enter name  : ").strip()
     phone = input("Enter phone : ").strip()
@@ -72,7 +68,6 @@ def insert_from_console():
     except psycopg2.errors.UniqueViolation:
         print(f"[ERROR] Phone '{phone}' already exists")
 
-# ─── 4. Update contact ────────────────────────────────────────
 def update_contact():
     print("What to search by?")
     print("  1) Name")
@@ -121,7 +116,6 @@ def update_contact():
     finally:
         conn.close()
 
-# ─── 5. Query / Search ────────────────────────────────────────
 def query_contacts():
     print("\nFilter options:")
     print("  1) Show all")
@@ -167,7 +161,6 @@ def query_contacts():
         print(f"{row[0]:<5} {row[1]:<20} {row[2]:<20}")
     print(f"\nTotal: {len(rows)} contact(s)")
 
-# ─── 6. Delete contact ────────────────────────────────────────
 def delete_contact():
     print("Delete by:")
     print("  1) Name")
@@ -198,7 +191,6 @@ def delete_contact():
     else:
         print("[INFO] Contact not found")
 
-# ─── Menu ─────────────────────────────────────────────────────
 def main():
     create_table()
 
