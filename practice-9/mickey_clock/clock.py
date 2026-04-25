@@ -26,14 +26,13 @@ SECOND_NATURAL = 225
 CENTER = (SIZE // 2, SIZE // 2)
  
 def rotate_hand(img, target_angle_cw, natural_angle_cw):
-   """Поворачивает руку так, чтобы она указывала на target_angle_cw."""
    rotation = -(target_angle_cw - natural_angle_cw)
    rotated  = pygame.transform.rotate(img, rotation)
    rect     = rotated.get_rect(center=CENTER)
    return rotated, rect
  
 def get_time_angles():
-   now = datetime.datetime.now()   # ← убрать markdown-форматирование
+   now = datetime.datetime.now()
    h  = now.hour % 12
    m  = now.minute
    s  = now.second
@@ -47,9 +46,6 @@ def get_time_angles():
 while True:
    for event in pygame.event.get():
       if event.type == pygame.QUIT:
-         pygame.quit()
-         sys.exit()
-      if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
          pygame.quit()
          sys.exit()
  
