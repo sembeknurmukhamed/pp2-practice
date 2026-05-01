@@ -2,11 +2,7 @@ import csv
 import psycopg2
 from connect import get_connection
 
-
-# ──────────────────────────────────────────────
 # Table setup
-# ──────────────────────────────────────────────
-
 def create_table():
     with get_connection() as conn:
         with conn.cursor() as cur:
@@ -19,11 +15,7 @@ def create_table():
             """)
     print("[INFO] Table is ready")
 
-
-# ──────────────────────────────────────────────
 # CSV import (unchanged helper)
-# ──────────────────────────────────────────────
-
 def insert_from_csv(filepath: str):
     inserted = skipped = 0
     conn = get_connection()
@@ -47,11 +39,7 @@ def insert_from_csv(filepath: str):
     conn.close()
     print(f"[INFO] CSV import done — inserted: {inserted}, skipped: {skipped}")
 
-
-# ──────────────────────────────────────────────
 # 1. Search by pattern  →  search_contacts(pattern)
-# ──────────────────────────────────────────────
-
 def search_contacts():
     pattern = input("Enter search pattern (name or phone): ").strip()
     conn = get_connection()
@@ -70,11 +58,7 @@ def search_contacts():
         print(f"{r[0]:<5} {r[1]:<20} {r[2]:<20}")
     print(f"\nTotal: {len(rows)} contact(s)")
 
-
-# ──────────────────────────────────────────────
 # 2. Upsert single contact  →  upsert_contact(name, phone)
-# ──────────────────────────────────────────────
-
 def upsert_contact():
     name  = input("Enter name  : ").strip()
     phone = input("Enter phone : ").strip()
@@ -88,11 +72,7 @@ def upsert_contact():
     conn.close()
     print("[INFO] Done (inserted or updated)")
 
-
-# ──────────────────────────────────────────────
 # 3. Bulk insert  →  insert_many_contacts(names[], phones[])
-# ──────────────────────────────────────────────
-
 def insert_many_contacts():
     print("Enter contacts one per line as  name,phone  (empty line to finish):")
     names, phones = [], []
@@ -125,11 +105,7 @@ def insert_many_contacts():
     print(f"[INFO] Bulk insert done")
     print(f"[INFO] Invalid entries: {invalid}")
 
-
-# ──────────────────────────────────────────────
 # 4. Paginated query  →  get_contacts_page(limit, offset)
-# ──────────────────────────────────────────────
-
 def query_paginated():
     try:
         page_size = int(input("Page size [10]: ").strip() or "10")
@@ -155,11 +131,7 @@ def query_paginated():
     for r in rows:
         print(f"{r[0]:<5} {r[1]:<20} {r[2]:<20}")
 
-
-# ──────────────────────────────────────────────
 # 5. Delete  →  delete_contact(username, phone)
-# ──────────────────────────────────────────────
-
 def delete_contact():
     print("Delete by:")
     print("  1) Name")
@@ -181,11 +153,7 @@ def delete_contact():
     conn.close()
     print("[INFO] Done")
 
-
-# ──────────────────────────────────────────────
 # Main menu
-# ──────────────────────────────────────────────
-
 MENU = """
 ╔══════════════════════════════════════════╗
 ║          📞  PhoneBook  (Practice 8)     ║
