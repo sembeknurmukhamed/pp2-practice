@@ -153,6 +153,7 @@ def delete_contact():
     conn.close()
     print("[INFO] Done")
 
+# small change
 # Main menu
 MENU = """
 ╔══════════════════════════════════════════╗
